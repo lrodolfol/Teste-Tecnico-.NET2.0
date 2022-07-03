@@ -15,9 +15,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
+//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
+//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlus");
+var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlusDocker");
 
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(connectionString));
+//builder.Services.AddDbContext<AppDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(opt => 
+    opt.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IContextCard, ContextCard>();
