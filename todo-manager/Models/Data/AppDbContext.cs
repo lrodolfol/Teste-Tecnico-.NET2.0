@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using todo_manager.Models.Entitie;
 
 namespace todo_manager.Models.Data
@@ -9,7 +10,6 @@ namespace todo_manager.Models.Data
 
         public DbSet<Priority> Priority { get; set; }
         public DbSet<Todo> Todo { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Priority>()

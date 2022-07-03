@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace todo_manager.Migrations
 {
-    public partial class DBInitials : Migration
+    public partial class Inicialização : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,8 +28,8 @@ namespace todo_manager.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    UserStory = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    title = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    UserStory = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     DeadLine = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdPriority = table.Column<int>(type: "int", nullable: false)
                 },

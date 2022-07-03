@@ -35,12 +35,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-/*
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        db.Database.Migrate();
+
+        Console.WriteLine("Auto migration foi executado");
+    }catch(Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        Console.WriteLine("Ocorreu erro ao executar o auto-migration.");
+        Console.WriteLine("Por favor, tente executar o comando 'Add-Migration 'migration' manualmente");
+    }
+    
 }
-*/
 
 app.Run();

@@ -13,7 +13,7 @@ namespace todo_manager.Models.Entitie
 
         [Required(ErrorMessage = "Campo obrigatório: Titulo")]
         [StringLength(20, ErrorMessage = "Campo não pode exceder 20 caracteres: Title")]
-        public string title { get; set; }
+        public string Title { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório: User Story")]
         [StringLength(120, ErrorMessage = "Campo não pode exceder 120 caracteres: User Story")]
