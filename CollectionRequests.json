@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "df2b7f82-a81f-4b64-aaa8-c3176ede50e8",
+		"_postman_id": "64e29f37-1d15-4b14-a0d5-4b2b0387f460",
 		"name": "ManagerTodo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18494575"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Tela de Login\",\r\n    \"userStory\": \"Criar tela de login cadastro de usuários individual por email e cpf\",\r\n    \"deadLine\": \"2022-08-01\",\r\n    \"idPriority\": 1\r\n}",
+					"raw": "{\r\n    \"title\": \"Login em duas etapas\",\r\n    \"userStory\": \"Como cliente quero usar 2 etapas para fazer login usando o google authenticator\",\r\n    \"deadLine\": \"2022-08-01\",\r\n    \"idPriority\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Tela de Login\",\r\n    \"userStory\": \"Criar tela de login cadastro de usuários e funcionários individual por email e cpf\",\r\n    \"deadLine\": \"2022-07-01\",\r\n    \"idPriority\": 3\r\n}",
+					"raw": "{\r\n    \"title\": \"Login em duas etapas\",\r\n    \"userStory\": \"Como cliente quero usar 2 etapas para fazer login usando o Authy\",\r\n    \"deadLine\": \"2022-08-01\",\r\n    \"idPriority\": 3\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
