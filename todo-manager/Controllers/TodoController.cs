@@ -56,7 +56,7 @@ namespace todo_manager.Controllers
             {
                 var query = 
                     (from t in cardsTodo
-                     where t.title == title
+                     where t.title.ToLower() == (title).ToLower()
                      select t).ToList();
 
                 cardsTodo = query.ToList();
