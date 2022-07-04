@@ -28,14 +28,28 @@ reutilização de código, isolamento de funcionalidades e padronizações de c�
  - A aplicação executa a migration para criar o database e tabelas automaticamente. Em caso de erro, será exibido as informações no console. Niss, Utilize o console de gerenciador de pacotes do NuGet e rode os comando de migrations: 
 	- Add-Migration "migration"
 	- Update-Database
- - O swagger está habilitado, mesmo assim, foi disponibilizado o arquivo CollectionRequests.json na raiz do projeto. Faça importação no Postman se necessário.
+ - O swagger está habilitado, mesmo assim, foi disponibilizado o arquivo CollectionRequests.json na raiz do projeto. Faça importação no Postman se necessário. De qualquer forma, já foi criado uma imagem para essa aplicação e disponibilizado no dockerhub. Link: https://hub.docker.com/r/rodolfojesus/todo_manager
  
  ### Container
 A aplicação também utiliza o Mysql no container. A comunicação é feita pelo nome da imagem mysql criado. Por padrão: mysql.  <br/>
 Descomentar linha 20 do arquivo Program.cs <br/> <br/>
+
 <i>var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlusDocker"); </i>
 <br/><br/>
-De qualquer forma, já foi criado uma imagem para essa aplicação e disponibilizado no dockerhub. Link: https://hub.docker.com/r/rodolfojesus/todo_manager
+
+<b>Para criar containers rode os seguintes comandos via terminal: </b><br/>
+```
+docker network create --driver bridge todo_manager
+```
+```
+docker run -d --name mysql --network todo_manager -e MYSQL_ROOT_PASSWORD=root123 mysql
+```
+```
+docker run -d -p 8080:80 --network todo_manager rodolfojesus/todo_manager:1.1
+```
+
+Abra o navegador no endereço <i>http://localhost:8080/swagger/index.html</i>
+
 
 ### Possíveis alterações necessárias
  - A aplicação está rodando na porta padrão disponibilizada pela plataforma. Portas 5001 para https e 5000 para http.
