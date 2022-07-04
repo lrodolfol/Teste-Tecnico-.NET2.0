@@ -28,7 +28,7 @@ reutilização de código, isolamento de funcionalidades e padronizações de c�
  - A aplicação executa a migration para criar o database e tabelas automaticamente. Em caso de erro, será exibido as informações no console. Niss, Utilize o console de gerenciador de pacotes do NuGet e rode os comando de migrations: 
 	- Add-Migration "migration"
 	- Update-Database
- - O swagger está habilitado, mesmo assim, foi disponibilizado o arquivo CollectionRequests.json na raiz do projeto. Faça importação no Postman se necessário. De qualquer forma, já foi criado uma imagem para essa aplicação e disponibilizado no dockerhub. Link: https://hub.docker.com/r/rodolfojesus/todo_manager
+ - O swagger está habilitado, mesmo assim, foi disponibilizado o arquivo CollectionRequests.json na raiz do projeto. Faça importação no Postman se necessário.
  
  ### Container
 A aplicação também utiliza o Mysql no container. A comunicação é feita pelo nome da imagem mysql criado. Por padrão: mysql.  <br/>
@@ -49,6 +49,8 @@ docker run -d -p 8080:80 --network todo_manager rodolfojesus/todo_manager:1.1
 ```
 
 Abra o navegador no endereço <i>http://localhost:8080/swagger/index.html</i>
+<br/>Link do dockerhub: https://hub.docker.com/r/rodolfojesus/todo_manager
+<br/>Use tag :1.1
 
 
 ### Possíveis alterações necessárias
