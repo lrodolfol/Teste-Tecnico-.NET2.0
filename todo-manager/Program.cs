@@ -55,6 +55,7 @@ using (var scope = app.Services.CreateScope())
     {
         Console.WriteLine(ex.Message);
         Console.WriteLine("Ocorreu erro ao executar o auto-migration.");
+        Console.WriteLine("Verifique se a string de conexão esta corretamente configurada.");
         Console.WriteLine("Por favor, tente executar o comando 'Add-Migration 'migration' manualmente");
     }
     
