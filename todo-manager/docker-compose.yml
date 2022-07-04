@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+    networks:
+      - todo
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  todo_manager:
+    image: rodolfojesus/todo_manager:1.1
+    networks:
+      - todo
+    ports:
+      - 8080:80
+    volumes:
+      - ./migrations:/todo_manager-migrations
+      - ./metadata:/todo_manager-metadata
+    depends_on: 
+      mysql:
+        condition: service_healthy
+
+networks:
+  todo:
+    driver: bridge
+
+volumes:
+  db_data:
