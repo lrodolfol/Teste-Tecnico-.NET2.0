@@ -22,7 +22,8 @@ reutilização de código, isolamento de funcionalidades e padronizações de c�
  - Pomelo Mysql
  - EFCore Proxies Lazy-loading
  - EFCore Tools
-
+ - CardsManagerLibTest (https://www.nuget.org/packages/CardsManagerLibTest/) v 1.1.1
+ 
 ## Rodando a aplicação
  - A aplicação utiliza a ConnectionString setada no arquivo appsettings.json para conexão com o bando de dados. Altere o arquivo com configurações da sua máquina local. Por padrão está usando o Mysql
  - A aplicação executa a migration para criar o database e tabelas automaticamente. Em caso de erro, será exibido as informações no console. Niss, Utilize o console de gerenciador de pacotes do NuGet e rode os comando de migrations: 
