@@ -1,18 +1,22 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugg
-# busca imagem
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build 
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
-# copiar projeto e restaurar depedencias
-COPY *.csproj ./
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["progress-manager/progress-manager.csproj", "progress-manager/"]
+RUN dotnet restore "progress-manager/progress-manager.csproj"
+COPY . .
+WORKDIR "/src/progress-manager"
+RUN dotnet build "progress-manager.csproj" -c Release -o /app/build
 
-# carrega aplicação
-COPY . ./
-RUN dotnet publish -c Release -o out
+FROM build AS publish
+RUN dotnet publish "progress-manager.csproj" -c Release -o /app/publish
 
-# carrega imagem
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/out .
-ENTRYPOINT [ "dotnet", "progress-manager.dll" ]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "progress-manager.dll"]

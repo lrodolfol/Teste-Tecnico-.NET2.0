@@ -14,8 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
-var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlusDocker");
+var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
+//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
@@ -32,11 +32,11 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

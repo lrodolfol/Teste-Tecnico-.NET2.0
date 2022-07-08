@@ -7,7 +7,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root123
     networks:
-      - todo
+      - cards-manager
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
@@ -16,7 +16,7 @@ services:
   todo_manager:
     image: rodolfojesus/todo_manager:1.1
     networks:
-      - todo
+      - cards-manager
     ports:
       - 8080:80
     volumes:
@@ -27,7 +27,7 @@ services:
         condition: service_healthy
 
 networks:
-  todo:
+  cards-manager:
     driver: bridge
 
 volumes:
