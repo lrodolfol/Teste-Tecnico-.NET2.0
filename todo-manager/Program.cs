@@ -1,3 +1,4 @@
+using CardsManagerLib.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -5,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 using todo_manager.Models.Data;
-using todo_manager.Models.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,11 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
-var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlus");
-//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlusDocker");
+var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
 
 //builder.Services.AddDbContext<AppDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(connectionString));
-builder.Services.AddDbContext<AppDbContext>(opt => 
+builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

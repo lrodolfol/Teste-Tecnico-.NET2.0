@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using todo_manager.Models.Data.Dtos;
+using CardsManagerLib.Models.Data.Dtos;
 using todo_manager.Models.Entitie;
 
 namespace todo_manager.Profiles
@@ -11,7 +11,7 @@ namespace todo_manager.Profiles
             CreateMap<CreateCardDto, Todo>();
             CreateMap<Todo, ReadCardDto>()
                 .ForMember(dest => dest.Priority, map =>
-                map.MapFrom(src => src.Priority.Name));
+                map.MapFrom(src => src.NamePrority(src.Priority)));
         }
 
     }

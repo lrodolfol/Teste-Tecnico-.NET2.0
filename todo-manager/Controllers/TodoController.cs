@@ -1,19 +1,14 @@
 ﻿using AutoMapper;
+using CadsManagerLib.Models;
+using CardsManagerLib.Interfaces;
+using CardsManagerLib.Models.Data.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using todo_manager.Models.Data;
-using todo_manager.Models.Data.Dtos;
-using todo_manager.Models.Entitie;
-using todo_manager.Models.Interfaces;
 
 namespace todo_manager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TodoController : ControllerBase, ICardController
+    public class TodoController : ControllerBase
     {
         private IMapper _mapper;
         private IContextCard _contextCard;
@@ -35,12 +30,13 @@ namespace todo_manager.Controllers
             }
 
             return CreatedAtAction(nameof(GetCard), new { id = cardTodo.Id }, cardTodo);
+
         }
 
         [HttpGet]
-        public ActionResult<ReadCardDto> GetCard([FromQuery] string title)
+        public ActionResult<ReadCardDto> GetCard()
         {
-            return Ok(_contextCard.GetCardsDto(title));
+            return Ok(_contextCard.GetCardsDto(""));
         }
 
         [HttpGet("{id}")]

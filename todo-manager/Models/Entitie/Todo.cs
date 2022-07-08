@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using CadsManagerLib.Models;
 
 namespace todo_manager.Models.Entitie
 {

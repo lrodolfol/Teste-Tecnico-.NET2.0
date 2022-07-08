@@ -11,8 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
-var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
+var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
+//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));

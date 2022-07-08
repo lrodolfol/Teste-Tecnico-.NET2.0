@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using CadsManagerLib.Models;
+using CardsManagerLib.Interfaces;
+using CardsManagerLib.Models.Data.Dtos;
 using System.Collections.Generic;
 using System.Linq;
-using todo_manager.Models.Data.Dtos;
 using todo_manager.Models.Entitie;
-using todo_manager.Models.Interfaces;
 
 namespace todo_manager.Models.Data
 {
@@ -58,7 +59,7 @@ namespace todo_manager.Models.Data
         {
             List<Todo> cardsTodo =
                 (from todo in _context.Todo
-                 orderby todo.IdPriority descending
+                 orderby todo.Priority descending
                  select todo).ToList();
 
             if (!string.IsNullOrEmpty(title))

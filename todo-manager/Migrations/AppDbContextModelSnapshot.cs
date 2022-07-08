@@ -19,38 +19,6 @@ namespace todo_manager.Migrations
                 .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("todo_manager.Models.Entitie.Priority", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Priority");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "baixo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "medio"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "alto"
-                        });
-                });
-
             modelBuilder.Entity("todo_manager.Models.Entitie.Todo", b =>
                 {
                     b.Property<int>("Id")
@@ -60,7 +28,7 @@ namespace todo_manager.Migrations
                     b.Property<DateTime>("DeadLine")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("IdPriority")
+                    b.Property<int>("Priority")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -75,25 +43,7 @@ namespace todo_manager.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPriority");
-
                     b.ToTable("Todo");
-                });
-
-            modelBuilder.Entity("todo_manager.Models.Entitie.Todo", b =>
-                {
-                    b.HasOne("todo_manager.Models.Entitie.Priority", "Priority")
-                        .WithMany("Todos")
-                        .HasForeignKey("IdPriority")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Priority");
-                });
-
-            modelBuilder.Entity("todo_manager.Models.Entitie.Priority", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }
