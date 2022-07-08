@@ -5,15 +5,24 @@
 <h3 align="center"> Construção de API para gerenciamentos de TODO's </h3>
 
 ## Sobre 
-A aplicação foi desenvolvida pensando em sua possível extensão para mais funcionalidades e models/controladores além do Todo. <br>
+O projeto inicial era para fazer uma API de gerenciamento de TODO's. Vi a oporunidade de transformar essa tarefa em algo mais robusto e utilizar outras ferramentas para isso. Onde dei push em 3 imagens no docckerhub: <b>(Veja as versões de cada para melhor uso da aplicação)</b> <br/><br/>
+https://hub.docker.com/r/rodolfojesus/todo_manager <b>(Gerenciamento de Todo's) </b><br/>
+https://hub.docker.com/r/rodolfojesus/progress-manager <b>(Gerenciamento de In Progress)</b><br/>
+https://hub.docker.com/r/rodolfojesus/done-manager  <b>(Gerenciamento de Done's)</b><br/>
+
+e outra assembly no Nuget: <br/> 
+https://www.nuget.org/packages/CardsManagerLibTest/
+
+<p>A aplicação foi desenvolvida pensando em sua possível extensão para mais funcionalidades e models/controladores além do Todo. <br>
 Os pacotes utilizados ajudam na implementação de padrões de projetos utilizados 
 como criação e mapeamento de novos objetos, responsabilidades únicas de classe, 
-reutilização de código, isolamento de funcionalidades e padronizações de código para melhor leitura.
+reutilização de código, isolamento de funcionalidades e padronizações de código para melhor leitura.</p>
 
 ## Tecnologias Utilizadas: 
  - Banco de dados Mysql / SqlServer
  - IDE Visual Studio Community 2022
  - .NET CORE 6
+ - Docker
 
 ### Bibliotecas, Pacotes e Frameworks utilizados:
  - EntityFrameWorkCore
@@ -35,10 +44,10 @@ reutilização de código, isolamento de funcionalidades e padronizações de c�
 A aplicação também utiliza o Mysql no container. A comunicação é feita pelo nome da imagem mysql criado. Por padrão: mysql.  <br/>
 Descomentar linha 20 do arquivo Program.cs <br/> <br/>
 
-<i>var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerPlusDocker"); </i>
+<i>var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker"); </i>
 <br/><br/>
 
-<b>Use o Arquivo docker-compose.yml contido na pasta do projeto para criar todo ambiente e as dependencias necessárias automaticamente e execute o comando na pasta correpondente: </b><br/>
+<b>Use o Arquivo docker-compose.yml contido na pasta de cada projeto para criar todos os ambientee e as dependencias necessárias automaticamente e execute o comando na pasta correpondente: </b><br/>
 ```
 docker compose up
 ```
@@ -47,19 +56,18 @@ Mas se preferir
 
 <b>Para criar containers rode os seguintes comandos via terminal: </b><br/>
 ```
-docker network create --driver bridge todo_manager
+docker network create --driver bridge cards_manager
 ```
 ```
-docker run -d --name mysql --network todo_manager -e MYSQL_ROOT_PASSWORD=root123 mysql
+docker run -d --name mysql --network cards_manager -e MYSQL_ROOT_PASSWORD=root123 mysql
 ```
 ```
-docker run -d -p 8080:80 --network todo_manager rodolfojesus/todo_manager:1.1
+docker run -d -p 8080:80 --network cards_manager rodolfojesus/todo_manager:2.0
+docker run -d -p 8081:80 --network cards_manager rodolfojesus/progess_manager:1.0
+docker run -d -p 8082:80 --network cards_manager rodolfojesus/done_manager:1.0
 ```
 
 Abra o navegador no endereço <i>http://localhost:8080/swagger/index.html</i>
-<br/>Link do dockerhub: https://hub.docker.com/r/rodolfojesus/todo_manager
-<br/>Use tag :1.1
-
 
 ### Possíveis alterações necessárias
  - A aplicação está rodando na porta padrão disponibilizada pela plataforma. Portas 5001 para https e 5000 para http.
