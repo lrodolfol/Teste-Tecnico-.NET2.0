@@ -25,3 +25,16 @@ C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\D
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.pdb
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.genruntimeconfig.cache
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\ref\progress-manager.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\CardsManagerLib.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Humanizer.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
