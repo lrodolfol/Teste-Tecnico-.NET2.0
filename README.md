@@ -63,7 +63,7 @@ docker run -d --name mysql --network cards_manager -e MYSQL_ROOT_PASSWORD=root12
 ```
 ```
 docker run -d -p 8080:80 --network cards_manager rodolfojesus/todo_manager:2.0
-docker run -d -p 8081:80 --network cards_manager rodolfojesus/progess_manager:1.0
+docker run -d -p 8081:80 --network cards_manager rodolfojesus/progress_manager:1.0
 docker run -d -p 8082:80 --network cards_manager rodolfojesus/done_manager:1.0
 ```
 
