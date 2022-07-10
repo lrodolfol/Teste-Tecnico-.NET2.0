@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 using todo_manager.Models.Data;
+using todo_manager.RabbitMq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
-var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
+var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManager");
+//var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker");
 
 //builder.Services.AddDbContext<AppDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(connectionString));
 builder.Services.AddDbContext<AppDbContext>(opt =>
@@ -25,6 +26,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IContextCard, ContextCard>();
+
+builder.Services.AddSingleton<IRabbitMqClient, RabbitMqClient>();
 
 builder.Services.AddSwaggerGen(c =>
 {

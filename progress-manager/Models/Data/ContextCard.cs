@@ -3,6 +3,7 @@ using CadsManagerLib.Models;
 using CardsManagerLib.Interfaces;
 using CardsManagerLib.Models.Data.Dtos;
 using progress_manager.Models.Entitie;
+using System.Text.Json;
 
 namespace progress_manager.Models.Data
 {
@@ -109,6 +110,16 @@ namespace progress_manager.Models.Data
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public void ElevateCard(string mensagem)
+        {
+            var msg = JsonSerializer.Deserialize<object>(mensagem);
+
+            Console.WriteLine($"Postado!---------->----> {mensagem}");
+
+            //converter mensagem para um card dto
+            //fazer post
         }
     }
 }

@@ -2,6 +2,7 @@ using CardsManagerLib.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using progress_manager.Models.Data;
+using progress_manager.RabbitMqClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IContextCard, ContextCard>();
+
+builder.Services.AddHostedService<RabbitMqConsumer>();
 
 builder.Services.AddSwaggerGen(c =>
 {

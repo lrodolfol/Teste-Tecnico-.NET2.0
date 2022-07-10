@@ -5,6 +5,7 @@ using CardsManagerLib.Models.Data.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 using todo_manager.Models.Entitie;
+using todo_manager.RabbitMq;
 
 namespace todo_manager.Models.Data
 {
@@ -12,11 +13,13 @@ namespace todo_manager.Models.Data
     {
         private AppDbContext _context;
         private IMapper _mapper;
+        private IRabbitMqClient _rabbitMqClient;
 
-        public ContextCard(AppDbContext context, IMapper mapper)
+        public ContextCard(AppDbContext context, IMapper mapper, IRabbitMqClient rabbitMqClient)
         {
             _context = context;
             _mapper = mapper;
+            _rabbitMqClient = rabbitMqClient;
         }
 
         public Card PostCard(CreateCardDto cardDto)
@@ -112,5 +115,23 @@ namespace todo_manager.Models.Data
         {
             _context.SaveChanges();
         }
+
+        public bool ElevateCard(int id)
+        {
+            Todo cardTodo = _context.Todo.FirstOrDefault(t => t.Id == id);
+            if (cardTodo == null)
+            {
+                return false;
+            }
+
+            //publicar com rabbitmq
+            _rabbitMqClient.PublicarElevateCard(cardTodo);
+
+            _context.Todo.Remove(cardTodo);
+            SaveChanges();
+
+            return true;
+        }
+
     }
 }

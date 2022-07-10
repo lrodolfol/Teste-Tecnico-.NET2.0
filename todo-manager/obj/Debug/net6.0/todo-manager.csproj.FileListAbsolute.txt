@@ -38,3 +38,4 @@ C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\todo-manager\obj\Debug
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\todo-manager\obj\Debug\net6.0\todo-manager.pdb
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\todo-manager\obj\Debug\net6.0\todo-manager.genruntimeconfig.cache
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\todo-manager\obj\Debug\net6.0\ref\todo-manager.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\todo-manager\bin\Debug\net6.0\RabbitMQ.Client.dll
