@@ -126,7 +126,7 @@ namespace todo_manager.Models.Data
 
             //publicar com rabbitmq
             _rabbitMqClient.PublicarElevateCard(cardTodo);
-
+            return true;
             _context.Todo.Remove(cardTodo);
             SaveChanges();
 

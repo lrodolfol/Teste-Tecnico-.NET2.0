@@ -4,6 +4,7 @@ using RabbitMQ.Client;
 using System;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using todo_manager.Models.Entitie;
 
 namespace todo_manager.RabbitMq
@@ -14,33 +15,70 @@ namespace todo_manager.RabbitMq
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
+
+        public RabbitMqClient(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public void PublicarElevateCard(Card card)
+        {
+            string teste = _configuration["RabbitMqHost"];
+            while(true)
+            {
+                var factory = new ConnectionFactory()
+                {
+                    HostName = _configuration["RabbitMqHost"]
+                };
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "todo-manager", durable: false, exclusive: false, autoDelete: false, arguments: null);
+                    var serialize = JsonSerializer.Serialize(card);
+                    var body = Encoding.UTF8.GetBytes(serialize);
+
+                    channel.BasicPublish(exchange: "", routingKey: "todo-manager", basicProperties: null, body: body);
+
+                    Console.WriteLine("Publish card");
+                }
+                Thread.Sleep(500);
+            }
+            
+        }
+
+        /*
         public RabbitMqClient(IConfiguration configuration)
         {
             _configuration = configuration;
             _connection = new ConnectionFactory()
             {
                 HostName = "localhost",
-                Port = Int32.Parse(_configuration["RabbitMqPort"])
+                Port = 15672,
+                UserName = "root",
+                Password = "sinqia123"
             }.CreateConnection();
 
             _channel = _connection.CreateModel();
-            _channel.ExchangeDeclare(exchange: "trigger", type: ExchangeType.Fanout);
+            _channel.ExchangeDeclare(exchange: "Ex-todo-manager", type: ExchangeType.Fanout);
         }
 
         public void PublicarElevateCard(Card card)
         {
-            //serializar msg
+            
             string requisisao = JsonSerializer.Serialize(card);
-            //converter em bytes
+            
             var body = Encoding.UTF8.GetBytes(requisisao);
 
-            //corpo da mensagem sera criado atraves do canal de conexão
+            
             _channel.BasicPublish(
-                exchange: "trigger",
+                exchange: "Ex-todo-manager",
                 routingKey: "",
                 basicProperties: null,
                 body: body
                 );
-        }
+
+            Console.WriteLine("Send card to progress");
+        }*/
+
     }
 }
