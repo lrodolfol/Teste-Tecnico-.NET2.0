@@ -17,9 +17,7 @@ namespace todo_manager.Controllers
         public IActionResult StartTodo(int id)
         {
             _contextCard.ElevateCard(id);
-            //chamar metodo o progress-manager e realizar novo post
             
-
             return Ok();
         }
     }

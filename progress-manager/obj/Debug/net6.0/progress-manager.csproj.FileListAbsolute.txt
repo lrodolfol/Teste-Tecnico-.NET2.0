@@ -38,3 +38,4 @@ C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\D
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.pdb
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.genruntimeconfig.cache
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\ref\progress-manager.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\RabbitMQ.Client.dll

@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "/HNwcghgEbfJZv8stdvAln9LWfI2gYywL0SuEg0lmo2cO0U6vVs9PdjltF+G0yqEX6iU/upZsXGPcR602PC3vw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rodolfo.jesus\\Documents\\Csharp\\todo_manager_plus\\CardsConsumers\\CardsConsumers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\cardsmanagerlibtest\\1.1.2\\cardsmanagerlibtest.1.1.2.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\rabbitmq.client\\6.4.0\\rabbitmq.client.6.4.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

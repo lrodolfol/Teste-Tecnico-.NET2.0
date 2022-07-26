@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CadsManagerLib.Models;
 using CardsManagerLib.Models.Data.Dtos;
 using progress_manager.Models.Entitie;
 

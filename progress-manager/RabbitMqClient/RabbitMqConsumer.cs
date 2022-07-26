@@ -1,4 +1,7 @@
-﻿using CardsManagerLib.Interfaces;
+﻿using AutoMapper;
+using CadsManagerLib.Models;
+using CardsManagerLib.Interfaces;
+using CardsManagerLib.Models.Data.Dtos;
 using progress_manager.Models.Data;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -6,14 +9,60 @@ using System.Text;
 
 namespace progress_manager.RabbitMqClient
 {
-    public class RabbitMqConsumer : BackgroundService
+    public class RabbitMqConsumer
     {
         private readonly IConfiguration _configuration;
         private readonly string _nomeFila;
         private readonly IConnection _connection;
         private IModel _channel;
-        private readonly ContextCard _contextCard;
+        private readonly IContextCard _contextCard;
+        private readonly IMapper _mapper;
 
+        public RabbitMqConsumer(IConfiguration configuration, IMapper mapper)
+        {
+            _configuration = configuration;
+            _mapper = mapper;
+        }
+
+        public void Consumir()
+        {
+            while(true)
+            {
+                var factory = new ConnectionFactory() { HostName = _configuration["RabbitMqHost"] };
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "todo-manager", durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+                    var consumer = new EventingBasicConsumer(channel);
+                    consumer.Received += (model, ea) =>
+                    {
+                        try
+                        {
+                            var body = ea.Body.ToArray();
+                            CreateCardDto card = System.Text.Json.JsonSerializer.Deserialize<CreateCardDto>(body);
+
+                            _contextCard.PostCard(card);
+                            Console.WriteLine("Consumido");
+
+                            channel.BasicAck(ea.DeliveryTag, false);
+                        }
+                        catch (Exception ex)
+                        {
+                            channel.BasicNack(ea.DeliveryTag, false, true);
+                        }
+                    };
+
+                    channel.BasicConsume(queue: "todo-manager", autoAck: false, consumer: consumer);
+                }
+                Thread.Sleep(200);
+            }
+            
+
+        }
+
+
+        /*
         public RabbitMqConsumer(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -38,7 +87,6 @@ namespace progress_manager.RabbitMqClient
                 var body = args.Body;
                 var mensagem = Encoding.UTF8.GetString(body.ToArray());
 
-                //_processaEvento.Processa(mensagem);
                 _contextCard.ElevateCard(mensagem);
             };
 
@@ -46,5 +94,6 @@ namespace progress_manager.RabbitMqClient
 
             return Task.CompletedTask;
         }
+        */
     }
 }
