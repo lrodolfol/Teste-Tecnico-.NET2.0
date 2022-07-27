@@ -42,7 +42,7 @@ namespace progress_manager.RabbitMqClient
                             var body = ea.Body.ToArray();
                             CreateCardDto card = System.Text.Json.JsonSerializer.Deserialize<CreateCardDto>(body);
 
-                            _contextCard.PostCard(card);
+                            //_contextCard.PostCard(card);
                             Console.WriteLine("Consumido");
 
                             channel.BasicAck(ea.DeliveryTag, false);

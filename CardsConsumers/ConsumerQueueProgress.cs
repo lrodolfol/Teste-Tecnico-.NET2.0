@@ -20,33 +20,34 @@ namespace CardsConsumers
         private readonly IMapper _mapper;
 
         public void Consume(string hostName)
-        {
-            var factory = new ConnectionFactory() { HostName = hostName };
+        {   
+            var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "todo-manager", durable: false, exclusive: false, autoDelete: false, arguments: null);
+                int cont = 1;
 
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
+                while (true)
                 {
-                    try
+                    var consumer = new EventingBasicConsumer(channel);
+                    consumer.Received += (model, ea) =>
                     {
                         var body = ea.Body.ToArray();
                         CreateCardDto card = System.Text.Json.JsonSerializer.Deserialize<CreateCardDto>(body);
+                        SendCardProgress sendCard = new SendCardProgress();
 
-                        Console.WriteLine("Consumido");
+                        sendCard.Send(card);
 
-                        //ENVIAR PARA API PROGRESS
+                        Console.WriteLine($"{cont} Received! ");
 
-                        channel.BasicAck(ea.DeliveryTag, false);
-                    }
-                    catch (Exception ex)
-                    {
-                        channel.BasicNack(ea.DeliveryTag, false, true);
-                    }
-                };
-                channel.BasicConsume(queue: "todo-manager", autoAck: false, consumer: consumer);
+                        cont++;
+                        //Thread.Sleep(1000);
+                    };
+
+                    channel.BasicConsume(queue: "todo-manager", autoAck: true, consumer: consumer);
+                }
+
             }
         }
     }

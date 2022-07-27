@@ -15,7 +15,6 @@ namespace todo_manager.RabbitMq
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
-
         public RabbitMqClient(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -24,8 +23,7 @@ namespace todo_manager.RabbitMq
         public void PublicarElevateCard(Card card)
         {
             string teste = _configuration["RabbitMqHost"];
-            while(true)
-            {
+            
                 var factory = new ConnectionFactory()
                 {
                     HostName = _configuration["RabbitMqHost"]
@@ -42,7 +40,7 @@ namespace todo_manager.RabbitMq
                     Console.WriteLine("Publish card");
                 }
                 Thread.Sleep(500);
-            }
+            
             
         }
 
