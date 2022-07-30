@@ -19,6 +19,7 @@ C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\D
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\RabbitMQ.Client.dll
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -38,4 +39,3 @@ C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\D
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.pdb
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\progress-manager.genruntimeconfig.cache
 C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\obj\Debug\net6.0\ref\progress-manager.dll
-C:\Users\rodolfo.jesus\Documents\Csharp\todo_manager_plus\progress-manager\bin\Debug\net6.0\RabbitMQ.Client.dll

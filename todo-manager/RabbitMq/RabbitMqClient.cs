@@ -1,4 +1,5 @@
 ﻿using CadsManagerLib.Models;
+using CardsManagerLib.Models.Data.Dtos;
 using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using System;
@@ -20,11 +21,9 @@ namespace todo_manager.RabbitMq
             _configuration = configuration;
         }
 
-        public void PublicarElevateCard(Card card)
+        public void PublicarElevateCard(CreateCardDto card)
         {
-            string teste = _configuration["RabbitMqHost"];
-            
-                var factory = new ConnectionFactory()
+            var factory = new ConnectionFactory()
                 {
                     HostName = _configuration["RabbitMqHost"]
                 };
@@ -37,11 +36,9 @@ namespace todo_manager.RabbitMq
 
                     channel.BasicPublish(exchange: "", routingKey: "todo-manager", basicProperties: null, body: body);
 
-                    Console.WriteLine("Publish card");
+                    Console.WriteLine($"===> {card.title} send to progress");
                 }
-                Thread.Sleep(500);
-            
-            
+                //Thread.Sleep(500);
         }
 
         /*

@@ -124,8 +124,10 @@ namespace todo_manager.Models.Data
                 return false;
             }
 
+            CreateCardDto cardDto = _mapper.Map<CreateCardDto>(cardTodo);
+
             //publicar com rabbitmq
-            _rabbitMqClient.PublicarElevateCard(cardTodo);
+            _rabbitMqClient.PublicarElevateCard(cardDto);
             return true;
             _context.Todo.Remove(cardTodo);
             SaveChanges();

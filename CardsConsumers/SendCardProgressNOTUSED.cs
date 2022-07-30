@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace CardsConsumers
 {
-    public class SendCardProgress
+    public class SendCardProgressNOTUSED
     {
         private HttpClient _client = new HttpClient();
         string uriProgress = "https://localhost:7144/";

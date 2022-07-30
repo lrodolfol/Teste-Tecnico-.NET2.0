@@ -19,30 +19,33 @@ namespace CardsConsumers
         private IModel _channel;
         private readonly IMapper _mapper;
 
-        public void Consume(string hostName)
+        public void Consume()
         {   
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "todo-manager", durable: false, exclusive: false, autoDelete: false, arguments: null);
-                int cont = 1;
-
+                
                 while (true)
                 {
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) =>
                     {
                         var body = ea.Body.ToArray();
-                        CreateCardDto card = System.Text.Json.JsonSerializer.Deserialize<CreateCardDto>(body);
-                        SendCardProgress sendCard = new SendCardProgress();
+                        CreateCardDto cardDto = System.Text.Json.JsonSerializer.Deserialize<CreateCardDto>(body);
 
-                        sendCard.Send(card);
+                        Connection c = new Connection();
+                        if(! c.Insert(cardDto))
+                        {
+                            channel.BasicNack(ea.DeliveryTag, false, true);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"<==={cardDto.title} Received in progress! ");
+                        }
 
-                        Console.WriteLine($"{cont} Received! ");
 
-                        cont++;
-                        //Thread.Sleep(1000);
                     };
 
                     channel.BasicConsume(queue: "todo-manager", autoAck: true, consumer: consumer);
