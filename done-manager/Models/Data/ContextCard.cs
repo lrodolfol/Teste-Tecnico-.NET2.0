@@ -110,5 +110,10 @@ namespace done_manager.Models.Data
         {
             _context.SaveChanges();
         }
+
+        public bool ElevateCard(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

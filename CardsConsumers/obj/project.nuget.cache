@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lZ8po/4BoumMxFtknPq9M3KHOnTQpNffD15GEVocPbnXvjgZDwz7+LKVR/LwhjJxXOg0S3bMuvgwBk3MlxrR6w==",
+  "dgSpecHash": "9uGOG7TPiVrg544waoz04+NuPHei8HCx7KvhShL9Ru7ECN6Dph3X9jIqt+nLPjT4d13BX7UFsgk+mo2GqwXCWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\rodolfo.jesus\\Documents\\Csharp\\todo_manager_plus\\CardsConsumers\\CardsConsumers.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\cardsmanagerlibtest\\1.1.2\\cardsmanagerlibtest.1.1.2.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
@@ -12,6 +13,8 @@
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

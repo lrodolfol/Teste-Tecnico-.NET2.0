@@ -21,7 +21,7 @@ namespace todo_manager.RabbitMq
             _configuration = configuration;
         }
 
-        public void PublicarElevateCard(CreateCardDto card)
+        public void PublicarElevateCard(ReadCardDto card)
         {
             var factory = new ConnectionFactory()
                 {

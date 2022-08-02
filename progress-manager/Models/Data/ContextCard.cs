@@ -3,6 +3,7 @@ using CadsManagerLib.Models;
 using CardsManagerLib.Interfaces;
 using CardsManagerLib.Models.Data.Dtos;
 using progress_manager.Models.Entitie;
+using progress_manager.RabbitMq;
 using System.Text.Json;
 
 namespace progress_manager.Models.Data
@@ -11,11 +12,12 @@ namespace progress_manager.Models.Data
     {
         private AppDbContext _context;
         private IMapper _mapper;
-
-        public ContextCard(AppDbContext context, IMapper mapper)
+        private IRabbitMqClient _rabbitMqClient;
+        public ContextCard(AppDbContext context, IMapper mapper, IRabbitMqClient rabbitMqClient)
         {
             _context = context;
             _mapper = mapper;
+            _rabbitMqClient = rabbitMqClient;
         }
 
         public Card PostCard(CreateCardDto cardDto)
@@ -112,14 +114,20 @@ namespace progress_manager.Models.Data
             _context.SaveChanges();
         }
 
-        public void ElevateCard(string mensagem)
+        public Boolean ElevateCard(int id)
         {
-            var msg = JsonSerializer.Deserialize<object>(mensagem);
+            Progress cardProgress = _context.Progress.FirstOrDefault(t => t.Id == id);
+            if (cardProgress == null)
+            {
+                return false;
+            }
 
-            Console.WriteLine($"Postado!---------->----> {mensagem}");
+            ReadCardDto cardDto = _mapper.Map<ReadCardDto>(cardProgress);
 
-            //converter mensagem para um card dto
-            //fazer post
+            //publicar com rabbitmq
+            _rabbitMqClient.PublicarElevateCard(cardDto);
+
+            return true;
         }
     }
 }

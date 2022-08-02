@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CardsManagerLib.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using progress_manager.RabbitMqClient;
 
 namespace progress_manager.Controllers
@@ -7,15 +8,16 @@ namespace progress_manager.Controllers
     [Route("api/[controller]")]
     public class StartController : ControllerBase
     {
-        private readonly RabbitMqConsumer _consumer;
-        public StartController(RabbitMqConsumer consumer)
+        private IContextCard _contextCard;
+        public StartController(IContextCard contextCard)
         {
-            _consumer = consumer;
+            _contextCard = contextCard;
         }
-        [HttpGet]
-        public ActionResult GetCard()
+        [HttpGet("{id}")]
+        public IActionResult StartTodo(int id)
         {
-            _consumer.Consumir();
+            _contextCard.ElevateCard(id);
+
             return Ok();
         }
     }

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6ELwZpLjkSFTiJE/5OXiC1a9Z0NTDbwObNesv0u4Ues0dCPb6NcOtHUMa6MbmFk6cDBpMxLUtbpMV8zp4Jlt1g==",
+  "dgSpecHash": "UOh+lV4HQDwA+E6aallJtYi/UAmO0B9jGcjfaqchiIA8XAjQAGdrEDMYEBuhpOKe7H2/Wb685xzUgGXfDt6Ilg==",
   "success": true,
   "projectFilePath": "C:\\Users\\rodolfo.jesus\\Documents\\Csharp\\todo_manager_plus\\progress-manager\\progress-manager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
-    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\cardsmanagerlibtest\\1.1.1\\cardsmanagerlibtest.1.1.1.nupkg.sha512",
+    "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\cardsmanagerlibtest\\1.1.2\\cardsmanagerlibtest.1.1.2.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rodolfo.jesus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

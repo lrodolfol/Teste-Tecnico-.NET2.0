@@ -1,5 +1,4 @@
-﻿
-using CardsManagerLib.Interfaces;
+﻿using CardsManagerLib.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace todo_manager.Controllers
@@ -16,9 +15,12 @@ namespace todo_manager.Controllers
         [HttpGet("{id}")]
         public IActionResult StartTodo(int id)
         {
-            _contextCard.ElevateCard(id);
+            if(_contextCard.ElevateCard(id))
+            {
+                return Ok();
+            }
             
-            return Ok();
+            return NotFound();
         }
     }
 }
