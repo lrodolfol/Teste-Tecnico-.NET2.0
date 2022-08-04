@@ -10,7 +10,7 @@ Console.WriteLine("-");
 
 do
 {
-    ConsumerQueueProgress co = new ConsumerQueueProgress();
+    ConsumerQueueTodo co = new ConsumerQueueTodo();
     co.Consume();
 } while (1 == 1);
 

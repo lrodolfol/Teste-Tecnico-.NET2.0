@@ -79,6 +79,33 @@ namespace CardsConsumers.Progress
 
             CloseDb();
         }
+
+        public bool Delete(int IdCard)
+        {
+            try
+            {
+                OpenDb();
+                DbCommand cmd = factory.CreateCommand();
+                cmd.Connection = coon;
+                cmd.CommandText = "DELETE FROM progress WHERE id = @id";
+
+                DbParameter param = factory.CreateParameter();
+                param.ParameterName = "@id";
+                param.Value = IdCard;
+                cmd.Parameters.Add(param);
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseDb();
+            }
+        }
         public void Show(DbConnection conn)
         {
             using (DbCommand cmd = factory.CreateCommand())
@@ -95,7 +122,6 @@ namespace CardsConsumers.Progress
                 }
             };
         }
-
         public void OpenDb()
         {
             coon = new MySqlConnection("Server=localhost;Database=progress_manager;Uid=root;Pwd=sinqia123;");
