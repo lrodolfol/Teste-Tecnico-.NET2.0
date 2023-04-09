@@ -48,7 +48,7 @@ Descomentar linha 20 do arquivo Program.cs <br/> <br/>
 <i>var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker"); </i>
 <br/><br/>
 
-<b>Use o Arquivo docker-compose.yml contido na pasta de cada projeto para criar todos os ambientee e as dependencias necessárias automaticamente e execute o comando na pasta correpondente: </b><br/>
+<b>Use o Arquivo docker-compose.yml contido na pasta de cada projeto para criar todos os ambientee e as dependencias necessárias automaticamente e execute o comando na pasta correspondente: </b><br/>
 ```
 docker compose up
 ```
