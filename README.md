@@ -1,60 +1,86 @@
-![balta](https://baltaio.blob.core.windows.net/static/images/dark/balta-logo.svg)
+<h1 align="center">
+	Teste Técnico Desenvolvedor II .NET <br>
+	Melhoria do teste <a href="https://github.com/lrodolfol/Teste-Tecnico-.NET"> Inicial </a>
+	</br>*APROVADO 🚀
+</h1>
+<h3 align="center"> Construção de API para gerenciamentos de TODO's </h3>
 
-![Logo do App](https://github.com/balta-io/desafio-balta-may-the-fourth-backend/assets/965305/880fab7e-3998-4a0d-98ad-1d6ffc11298b)
+## Sobre 
+O projeto inicial era para fazer uma API de gerenciamento de TODO's. Vi a oporunidade de transformar essa tarefa em algo mais robusto e utilizar outras ferramentas para isso. Onde dei push em 3 imagens no docckerhub: <b>(Veja as versões de cada para melhor uso da aplicação)</b> <br/><br/>
+https://hub.docker.com/r/rodolfojesus/todo_manager <b>(Gerenciamento de Todo's) </b><br/>
+https://hub.docker.com/r/rodolfojesus/progress-manager <b>(Gerenciamento de In Progress)</b><br/>
+https://hub.docker.com/r/rodolfojesus/done-manager  <b>(Gerenciamento de Done's)</b><br/>
 
-## 🎖️ Desafio
-**May the Fourth** é a quarta edição dos **Desafios .NET** realizados pelo [balta.io](https://balta.io). Durante esta jornada, fizemos parte do batalhão backend onde unimos forças para entregar um App completo.
+e outra assembly no Nuget: <br/> 
+https://www.nuget.org/packages/CardsManagerLibTest/
 
-## 📱 Projeto
-Desenvolvimento de uma API, fornecendo O recurso de leitura referentes ao universo **Star Wars**.
+<p>A aplicação foi desenvolvida pensando em sua possível extensão para mais funcionalidades e models/controladores além do Todo. <br>
+Os pacotes utilizados ajudam na implementação de padrões de projetos utilizados 
+como criação e mapeamento de novos objetos, responsabilidades únicas de classe, 
+reutilização de código, isolamento de funcionalidades e padronizações de código para melhor leitura.</p>
 
-## Participantes
-### 🚀 Capitão
-Rodolfo Jesus - https://github.com/lrodolfol
+## Tecnologias Utilizadas: 
+ - Banco de dados Mysql / SqlServer
+ - IDE Visual Studio Community 2022
+ - .NET CORE 6
+ - Docker
 
-### 💂‍♀️ Batalhão
-* Anthony - https://github.com/anthonyhw
-* Victor - https://github.com/victor-azevedo
-* Kirmct - https://github.com/Kirmct
-* Leonardo - https://github.com/LeozinRomeiro
+### Bibliotecas, Pacotes e Frameworks utilizados:
+ - EntityFrameWorkCore
+ - AutoMapper DependecyInjection
+ - Provider SqlServer
+ - Pomelo Mysql
+ - EFCore Proxies Lazy-loading
+ - EFCore Tools
+ - CardsManagerLibTest (https://www.nuget.org/packages/CardsManagerLibTest/) v 1.1.1
+ 
+## Rodando a aplicação
+ - A aplicação utiliza a ConnectionString setada no arquivo appsettings.json para conexão com o bando de dados. Altere o arquivo com configurações da sua máquina local. Por padrão está usando o Mysql
+ - A aplicação executa a migration para criar o database e tabelas automaticamente. Em caso de erro, será exibido as informações no console. Niss, Utilize o console de gerenciador de pacotes do NuGet e rode os comando de migrations: 
+	- Add-Migration "migration"
+	- Update-Database
+ - O swagger está habilitado, mesmo assim, foi disponibilizado o arquivo CollectionRequests.json na raiz do projeto. Faça importação no Postman se necessário.
+ 
+ ### Container
+A aplicação também utiliza o Mysql no container. A comunicação é feita pelo nome da imagem mysql criado. Por padrão: mysql.  <br/>
+Descomentar linha 20 do arquivo Program.cs <br/> <br/>
 
-## ⚙️ Tecnologias
-* C# 12
-* .NET 8
-* ASP.NET
-* Minimal APIs
+<i>var connectionString = builder.Configuration.GetConnectionString("StringConnApiTodoManagerDocker"); </i>
+<br/><br/>
 
-## 🥋 Skills Desenvolvidas
-* Comunicação
-* Trabalho em Equipe
-* Networking
-* Muito conhecimento técnico
-
-## ⚙️ Como rodar o projeto
-#### para popular o banco de dados:
-Configure <b>'StarLs.SeedDataBase'</b> como projeto de inicialização e rode em modo de debug 
-<br> ou <br>
-Acesse: ./src/StarLs.SeedDataBase e rode o seguinte comando:
+<b>Use o Arquivo docker-compose.yml contido na pasta de cada projeto para criar todos os ambientee e as dependencias necessárias automaticamente e execute o comando na pasta correspondente: </b><br/>
 ```
-dotnet run
-```
-Retorne '<b>StarLs.Api'</b> como projeto de inicialização e execute o seguinte comando:
-```
-dotnet run
-```
-
-## Padrões e codigos utilizados:
-* Repository
-* Mediator
-* Cache em memória
-* Teste de unidade
-
-
-## 🧪 Como testar o projeto
-Acesse .src/StarLs.Tests e rode o seguinte comando:
-```
-dotnet test
+docker compose up
 ```
 
-# 💜 Participe
-Quer participar dos próximos desafios? Junte-se a [maior comunidade .NET do Brasil 🇧🇷 💜](https://balta.io/discord)
+Mas se preferir
+
+<b>Para criar containers rode os seguintes comandos via terminal: </b><br/>
+```
+docker network create --driver bridge cards_manager
+```
+```
+docker run -d --name mysql --network cards_manager -e MYSQL_ROOT_PASSWORD=root123 mysql
+```
+```
+docker run -d -p 8080:80 --network cards_manager rodolfojesus/todo_manager:2.0
+docker run -d -p 8081:80 --network cards_manager rodolfojesus/progress_manager:1.0
+docker run -d -p 8082:80 --network cards_manager rodolfojesus/done_manager:1.0
+```
+
+Abra o navegador no endereço <i>http://localhost:8080/swagger/index.html</i>
+
+### Possíveis alterações necessárias
+ - A aplicação está rodando na porta padrão disponibilizada pela plataforma. Portas 5001 para https e 5000 para http.
+Se necessário alterar uma ou outra, basta alterar na linha 25 do arquivo launchSttings.json dentro da pasta Properties.
+ - Se utilizado o postman para usar as requições: <br>
+caso seja exibido algum erro de SSL, desabilite a verificação em: File->settings->SSQL certificate verification(off)
+
+
+## Credits
+- [Rodolfo J.Silva](https://github.com/lrodolfol) (Developer)
+- [LinkeIn](https://www.linkedin.com/in/rodolfoj-silva/)
+- Email: (rodolfo0ti@gmail.com)
+
+## License
+The MIT License (MIT).
